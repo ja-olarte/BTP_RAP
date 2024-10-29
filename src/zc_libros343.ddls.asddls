@@ -13,6 +13,7 @@ define view entity ZC_LIBROS343
     inner join      ztb_catego343   as Categorias on Libros.bi_categ = Categorias.bi_categ
     left outer join ZC_CLNTS_LIB343 as Ventas     on Libros.id_libro = Ventas.IdLibro
     association [0..*] to ZC_CLIENTES343 as _Clientes on $projection.IdLibro = _Clientes.IdLibro
+    //association [0..*] to ZC_CLIENTES343 as _Clientes on Libros.id_libro = _Clientes.IdLibro
 {
 
   key Libros.id_libro        as IdLibro,

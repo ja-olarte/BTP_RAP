@@ -2,8 +2,16 @@
 @EndUserText.label: 'Travel - Root Entity'
 @Metadata.ignorePropagatedAnnotations: true
 define root view entity Z_r_TRAVEL_343
+
   as select from ztravel_343
-  composition [0..*] of Z_r_BOOKING_343 as _Booking
+
+  composition [0..*] of Z_r_BOOKING_343          as _Booking
+
+  association [0..1] to /DMO/I_Agency            as _Agency        on $projection.AgencyID = _Agency.AgencyID
+  association [0..1] to /DMO/I_Customer          as _Customer      on $projection.CustomerID = _Customer.CustomerID
+  association [1..1] to /DMO/I_Overall_Status_VH as _OverallStatus on $projection.OverallStatus = _OverallStatus.OverallStatus
+  association [0..1] to I_Currency               as _Currency      on $projection.CurrencyCode = _Currency.Currency
+  
 {
   key travel_uuid           as TravelUUID,
 
@@ -36,5 +44,9 @@ define root view entity Z_r_TRAVEL_343
       last_changed_at       as LastChangedAt,
 
       // Make association public
-      _Booking
+      _Booking,
+      _Agency,
+      _Customer,
+      _OverallStatus,
+      _Currency
 }

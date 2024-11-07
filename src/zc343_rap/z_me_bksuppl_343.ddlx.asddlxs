@@ -13,11 +13,11 @@ annotate entity Z_C_BKSUPPL_343 with
                    label:           'Booking Supplement',
                    position:        10 }  ]
   @UI.hidden:true
-  booksuppluuid;
-  @UI.hidden:true
-  bookinguuid;
+  BookingSupplUUID;
   @UI.hidden:true
   TravelUUID;
+  @UI.hidden:true
+  BookingUUUID;
 
 
   @UI: { lineItem:       [ { position: 10,
